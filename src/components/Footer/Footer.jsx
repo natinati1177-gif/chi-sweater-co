@@ -3,10 +3,10 @@ export default function Footer() {
     <footer className="w-full px-8 py-16 flex flex-col md:flex-row justify-between items-center gap-12 bg-black dark:bg-neutral-900 text-white dark:text-neutral-100 border-t-2 border-black">
       <div className="flex flex-col items-center md:items-start gap-4">
         <div className="text-xl font-black text-white tracking-widest font-space-grotesk uppercase">
-          CHI_SWEATER_CO
+          NATI HIP HOP SHOP
         </div>
         <p className="font-space-grotesk uppercase text-[12px] tracking-widest text-neutral-400">
-          © 2024 CHI_SWEATER_CO. ENGINEERED IN CHICAGO.
+          © 2024 NATI HIP HOP SHOP. ENGINEERED IN CHICAGO.
         </p>
       </div>
       <div className="flex flex-wrap justify-center gap-8">

@@ -79,6 +79,15 @@ export default {
         "label-bold": ["Space Grotesk"],
         "space-grotesk": ["Space Grotesk"],
       },
+      keyframes: {
+        'slide-in': {
+          '0%': { opacity: '0', transform: 'translateX(100%)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        'slide-in': 'slide-in 0.25s ease-out',
+      },
       fontSize: {
         "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
         "headline-lg": ["48px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "700" }],

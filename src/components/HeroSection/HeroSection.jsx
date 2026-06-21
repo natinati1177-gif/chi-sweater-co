@@ -11,11 +11,11 @@ export default function HeroSection() {
       <div className="relative z-10 px-margin-mobile md:px-margin-desktop w-full text-white">
         <div className="max-w-3xl">
           <h1 className="font-display-xl text-display-xl mb-6 uppercase">
-            Chicago Style.<br />
+            NATI HIP HOP SHOP.<br />
             <span className="text-secondary">Built for the Streets.</span>
           </h1>
           <p className="font-body-lg text-body-lg mb-10 max-w-xl opacity-90">
-            Premium comfort meets iconic city energy. Our collection is engineered for the windy city's raw rhythm and high-contrast lifestyle.
+            Premium comfort meets authentic hip hop energy. Our collection is engineered for the streets — raw rhythm, high-contrast lifestyle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button className="w-full sm:w-auto bg-black text-white px-10 py-5 font-label-bold uppercase tracking-widest border-2 border-white hover:bg-secondary hover:border-secondary transition-all duration-300 active:scale-95">

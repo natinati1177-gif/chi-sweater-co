@@ -16,7 +16,7 @@ export default function MissionSection() {
             <span className="text-secondary">Built to Last.</span>
           </h2>
           <p className="font-body-lg text-body-lg mb-6 opacity-80">
-            CHI_SWEATER_CO started in a small studio off the Chicago Riverwalk in 2019. We were tired of streetwear that looked premium but fell apart after a season. So we engineered something different — garments with the same structural integrity as the city that inspired them.
+            NATI HIP HOP SHOP started in a small studio off the Chicago Riverwalk in 2019. We were tired of streetwear that looked premium but fell apart after a season. So we engineered something different — garments with the same structural integrity as the city that inspired them.
           </p>
           <p className="font-body-lg text-body-lg mb-6 opacity-80">
             We source only 500GSM heavyweight cotton fleece, dyed with low-impact pigments that hold their color through Chicago winters. Every seam is double-stitched. Every drop is capped at 100 units. We don't restock. We don't compromise.

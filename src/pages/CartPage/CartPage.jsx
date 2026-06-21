@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../../context/AuthContext'
+import { useCart } from '../../context/CartContext'
+import { useToast } from '../../context/ToastContext'
 
 export default function CartPage() {
   const { user } = useAuth()
+  const { refreshCart } = useCart()
+  const { showToast } = useToast()
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -25,12 +29,15 @@ export default function CartPage() {
   const removeItem = async (itemId) => {
     await supabase.from('cart_items').delete().eq('id', itemId)
     setItems((prev) => prev.filter((i) => i.id !== itemId))
+    refreshCart()
+    showToast('Item removed from cart', 'info')
   }
 
   const updateQuantity = async (itemId, newQty) => {
     if (newQty < 1) return
     await supabase.from('cart_items').update({ quantity: newQty }).eq('id', itemId)
     setItems((prev) => prev.map((i) => i.id === itemId ? { ...i, quantity: newQty } : i))
+    refreshCart()
   }
 
   const total = items.reduce((sum, item) => sum + Number(item.products?.price ?? 0) * item.quantity, 0)
