@@ -11,6 +11,7 @@ export default function TopAppBar() {
   const { user } = useAuth()
   const { cartCount } = useCart()
 
+  const isAdmin = user?.email === 'natinati1177@gmail.com'
   const isActive = (path) => location.pathname === path
   const isShopActive = location.pathname === '/shop' && !location.search.includes('badge=LIMITED')
   const isLimitedActive = location.pathname === '/shop' && location.search.includes('badge=LIMITED')
@@ -40,7 +41,7 @@ export default function TopAppBar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          {user && (
+          {isAdmin && (
             <Link
               to="/admin/dashboard"
               className="material-symbols-outlined text-black dark:text-white active:scale-95 transition-transform duration-200 hover:text-red-600"

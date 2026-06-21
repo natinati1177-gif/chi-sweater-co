@@ -40,12 +40,24 @@ export default function ProductPage() {
     setAdding(true)
     setSizeError(false)
 
-    const { error } = await supabase
+    const { data: existing } = await supabase
       .from('cart_items')
-      .upsert(
-        { user_id: user.id, product_id: product.id, quantity: 1 },
-        { onConflict: 'user_id,product_id' }
-      )
+      .select('id, quantity')
+      .eq('user_id', user.id)
+      .eq('product_id', product.id)
+      .maybeSingle()
+
+    let error
+    if (existing) {
+      ;({ error } = await supabase
+        .from('cart_items')
+        .update({ quantity: existing.quantity + 1 })
+        .eq('id', existing.id))
+    } else {
+      ;({ error } = await supabase
+        .from('cart_items')
+        .insert({ user_id: user.id, product_id: product.id, quantity: 1 }))
+    }
 
     setAdding(false)
     if (!error) {
@@ -87,7 +99,7 @@ export default function ProductPage() {
 
   return (
     <section className="py-section-gap px-margin-mobile md:px-margin-desktop">
-      <Link to="/" className="inline-flex items-center gap-2 font-label-bold uppercase text-sm mb-10 hover:text-secondary transition-colors">
+      <Link to="/shop" className="inline-flex items-center gap-2 font-label-bold uppercase text-sm mb-10 hover:text-secondary transition-colors">
         <span className="material-symbols-outlined text-base">arrow_back</span>
         Back to Shop
       </Link>

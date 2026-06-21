@@ -1,6 +1,8 @@
-import { NavLink, Outlet, Link, Navigate } from 'react-router-dom'
+import { NavLink, Outlet, Link, Navigate, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
+
+const ADMIN_EMAIL = 'natinati1177@gmail.com'
 
 const TABS = [
   { to: '/admin/dashboard', label: 'Dashboard' },
@@ -11,9 +13,11 @@ const TABS = [
 
 export default function AdminLayout() {
   const { user, loading } = useAuth()
+  const navigate = useNavigate()
 
   if (loading) return null
   if (!user) return <Navigate to="/signin" replace />
+  if (user.email !== ADMIN_EMAIL) return <Navigate to="/" replace />
 
   const initial = user.email?.[0]?.toUpperCase() ?? 'A'
 
@@ -50,7 +54,7 @@ export default function AdminLayout() {
               notifications
             </button>
             <button
-              onClick={() => supabase.auth.signOut()}
+              onClick={async () => { await supabase.auth.signOut(); navigate('/') }}
               className="material-symbols-outlined text-white/60 hover:text-red-400 transition-colors text-[20px]"
               title="Sign Out"
             >

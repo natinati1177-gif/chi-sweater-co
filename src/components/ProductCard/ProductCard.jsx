@@ -20,9 +20,24 @@ export default function ProductCard({ id, name, price, badge, badgeVariant = 'bl
     }
 
     setAdding(true)
-    const { error } = await supabase
+    const { data: existing } = await supabase
       .from('cart_items')
-      .upsert({ user_id: user.id, product_id: id, quantity: 1 }, { onConflict: 'user_id,product_id' })
+      .select('id, quantity')
+      .eq('user_id', user.id)
+      .eq('product_id', id)
+      .maybeSingle()
+
+    let error
+    if (existing) {
+      ;({ error } = await supabase
+        .from('cart_items')
+        .update({ quantity: existing.quantity + 1 })
+        .eq('id', existing.id))
+    } else {
+      ;({ error } = await supabase
+        .from('cart_items')
+        .insert({ user_id: user.id, product_id: id, quantity: 1 }))
+    }
 
     setAdding(false)
     if (!error) {
