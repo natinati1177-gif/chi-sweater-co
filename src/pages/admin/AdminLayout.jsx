@@ -30,7 +30,7 @@ export default function AdminLayout() {
             to="/"
             className="px-6 py-4 font-space-grotesk font-black uppercase tracking-widest text-sm text-white hover:text-red-400 transition-colors whitespace-nowrap"
           >
-            NATI HIP HOP SHOP / Admin
+            NATI NBA SHOP / Admin
           </Link>
 
           <nav className="flex">

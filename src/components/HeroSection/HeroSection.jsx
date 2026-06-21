@@ -11,7 +11,7 @@ export default function HeroSection() {
       <div className="relative z-10 px-margin-mobile md:px-margin-desktop w-full text-white">
         <div className="max-w-3xl">
           <h1 className="font-display-xl text-display-xl mb-6 uppercase">
-            NATI HIP HOP SHOP.<br />
+            NATI NBA SHOP.<br />
             <span className="text-secondary">Built for the Streets.</span>
           </h1>
           <p className="font-body-lg text-body-lg mb-10 max-w-xl opacity-90">

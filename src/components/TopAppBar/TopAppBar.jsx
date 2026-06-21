@@ -29,7 +29,7 @@ export default function TopAppBar() {
     <header className="sticky top-0 z-50 bg-white dark:bg-black border-b-2 border-black dark:border-neutral-800">
       <div className="flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto relative">
         <Link to="/" className="text-2xl font-black text-black dark:text-white tracking-widest font-space-grotesk uppercase">
-          NATI HIP HOP SHOP
+          NATI NBA SHOP
         </Link>
 
         {/* Desktop nav */}

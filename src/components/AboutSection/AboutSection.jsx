@@ -15,7 +15,7 @@ export default function AboutSection() {
           Engineered for the<br />Midwest Cold.
         </h2>
         <p className="font-body-lg text-body-lg mb-6 opacity-80">
-          Born in the heart of the Loop, NATI HIP HOP SHOP isn't just about apparel—it's a tribute to the resilience and rhythm of Chicago. Every stitch is inspired by the city's industrial past and its vibrant streetwear future.
+          Born in the heart of the Loop, NATI NBA SHOP isn't just about apparel—it's a tribute to the resilience and rhythm of Chicago. Every stitch is inspired by the city's industrial past and its vibrant streetwear future.
         </p>
         <p className="font-body-lg text-body-lg mb-10 opacity-80">
           We use only the highest-grade cotton and sustainable dyes, ensuring that your look is as durable as the city itself. This is high-fashion minimalism for those who walk the streets with purpose.

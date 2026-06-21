@@ -125,7 +125,7 @@ export default function ProductPage() {
         <div className="flex flex-col gap-8 pt-4">
           <div>
             <span className="font-label-bold uppercase tracking-widest text-sm text-secondary mb-2 block">
-              NATI HIP HOP SHOP
+              NATI NBA SHOP
             </span>
             <h1 className="font-headline-lg text-headline-lg uppercase leading-none mb-4">
               {product.name}
