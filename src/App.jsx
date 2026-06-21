@@ -11,6 +11,8 @@ import SignUpPage from './pages/SignUpPage/SignUpPage'
 import ProductPage from './pages/ProductPage/ProductPage'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 import ShopPage from './pages/ShopPage/ShopPage'
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
+import OrderSuccessPage from './pages/OrderSuccessPage/OrderSuccessPage'
 import AdminLayout from './pages/admin/AdminLayout'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminProducts from './pages/admin/AdminProducts'
@@ -49,6 +51,8 @@ function AppRoutes() {
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/limited" element={<ShopPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-success" element={<OrderSuccessPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

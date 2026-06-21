@@ -110,9 +110,9 @@ export default function CartPage() {
           <p className="font-label-bold uppercase text-sm opacity-40">Total</p>
           <p className="font-headline-md text-2xl uppercase">${total.toFixed(2)}</p>
         </div>
-        <button className="bg-black text-white px-10 py-5 font-label-bold uppercase tracking-widest hover:bg-secondary transition-all duration-300">
+        <Link to="/checkout" className="bg-black text-white px-10 py-5 font-label-bold uppercase tracking-widest hover:bg-secondary transition-all duration-300">
           Checkout
-        </button>
+        </Link>
       </div>
     </section>
   )
