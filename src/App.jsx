@@ -13,6 +13,8 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 import ShopPage from './pages/ShopPage/ShopPage'
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 import OrderSuccessPage from './pages/OrderSuccessPage/OrderSuccessPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
+import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 import AdminLayout from './pages/admin/AdminLayout'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminProducts from './pages/admin/AdminProducts'
@@ -53,6 +55,8 @@ function AppRoutes() {
         <Route path="/limited" element={<ShopPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-success" element={<OrderSuccessPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
