@@ -9,11 +9,6 @@ const SORT_OPTIONS = [
   { value: 'price_desc', label: 'Price ↓' },
 ]
 
-const TRUST_ITEMS = [
-  { icon: 'local_shipping', text: 'Free Shipping $75+' },
-  { icon: 'autorenew', text: '30-Day Returns' },
-  { icon: 'verified', text: 'Authentic Gear' },
-]
 
 export default function ShopPage() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -94,18 +89,6 @@ export default function ShopPage() {
               ? "Once they're gone, they're gone. No restocks."
               : 'Heavyweight cotton. Engineered in Chicago. Ships worldwide.'}
           </p>
-        </div>
-      </div>
-
-      {/* ── Trust Strip ── */}
-      <div className="bg-red-600 text-white">
-        <div className="flex divide-x divide-red-500 max-w-4xl mx-auto">
-          {TRUST_ITEMS.map(({ icon, text }) => (
-            <div key={text} className="flex-1 flex items-center justify-center gap-2 py-3 px-4">
-              <span className="material-symbols-outlined text-[18px]">{icon}</span>
-              <span className="font-space-grotesk font-bold text-xs uppercase tracking-wider whitespace-nowrap">{text}</span>
-            </div>
-          ))}
         </div>
       </div>
 

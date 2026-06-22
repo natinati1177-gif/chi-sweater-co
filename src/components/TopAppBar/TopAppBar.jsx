@@ -43,10 +43,10 @@ export default function TopAppBar() {
   return (
     <>
       {/* Scrolling announcement bar */}
-      <div className="bg-red-600 text-white overflow-hidden py-2 select-none">
-        <div className="flex whitespace-nowrap" style={{ animation: 'ticker 28s linear infinite' }}>
+      <div className="bg-neutral-900 text-neutral-300 overflow-hidden py-1.5 select-none">
+        <div className="flex whitespace-nowrap" style={{ animation: 'ticker 36s linear infinite' }}>
           {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} className="font-label-bold uppercase tracking-widest text-xs mx-10">{item}</span>
+            <span key={i} className="font-label-bold uppercase tracking-widest text-[10px] mx-10">{item}</span>
           ))}
         </div>
       </div>
@@ -87,9 +87,6 @@ export default function TopAppBar() {
                 )}
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-red-600 transition-all duration-200 ${active ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 {label}
-                {label === 'LIMITED' && (
-                  <span className="ml-1 bg-red-600 text-white text-[8px] font-black px-1 py-0.5 uppercase align-middle">HOT</span>
-                )}
               </Link>
             ))}
           </nav>
@@ -158,7 +155,7 @@ export default function TopAppBar() {
               { to: '/', label: 'HOME' },
               { to: '/about', label: 'ABOUT' },
               { to: '/shop', label: 'SHOP' },
-              { to: '/shop?badge=LIMITED', label: 'LIMITED EDITION 🔥' },
+              { to: '/shop?badge=LIMITED', label: 'LIMITED EDITION' },
             ].map(({ to, label }) => (
               <Link
                 key={to}

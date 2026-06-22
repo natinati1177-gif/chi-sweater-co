@@ -41,7 +41,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="font-body-md text-sm text-neutral-400 leading-relaxed max-w-[200px]">
-              Premium Chicago streetwear. Built for the city. Made to last.
+              Premium NBA fan gear. Built for the game. Made to last.
             </p>
             {/* Social icons */}
             <div className="flex gap-4 mt-2">
@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-space-grotesk uppercase text-[11px] tracking-widest text-neutral-600">
-            © 2025 NATI NBA SHOP. ENGINEERED IN CHICAGO, IL.
+            © 2026 NATI NBA SHOP. FOR THE FANS. FOR THE GAME.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
