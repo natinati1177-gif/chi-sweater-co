@@ -1,6 +1,5 @@
 import HeroSection from '../../components/HeroSection/HeroSection'
 import BenefitsSection from '../../components/BenefitsSection/BenefitsSection'
-import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts'
 import NBAZone from '../../components/NBAZone/NBAZone'
 import AboutSection from '../../components/AboutSection/AboutSection'
 import ReviewsSection from '../../components/ReviewsSection/ReviewsSection'
@@ -11,7 +10,6 @@ export default function HomePage() {
     <>
       <HeroSection />
       <BenefitsSection />
-      <FeaturedProducts />
       <NBAZone />
       <AboutSection />
       <ReviewsSection />
