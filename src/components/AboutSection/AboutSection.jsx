@@ -5,8 +5,8 @@ export default function AboutSection() {
         <div className="hidden md:block absolute -top-10 -left-10 w-full h-full border-4 border-secondary -z-10"></div>
         <img
           className="w-full aspect-square object-cover border-2 border-black shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]"
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-          alt="Hip hop streetwear"
+          src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=800&q=80"
+          alt="NBA fan gear"
         />
       </div>
       <div className="w-full md:w-1/2">
