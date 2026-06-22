@@ -23,13 +23,16 @@ export default function TeamSection() {
             Founder & Creative Director
           </p>
           <h3 className="font-headline-lg text-headline-lg uppercase mb-6">
-            Nati.
+            Nati Sendeke.
           </h3>
           <p className="font-body-lg text-body-lg opacity-80 mb-6">
-            Lifelong NBA fan and the creative force behind NATI NBA SHOP. After years of searching for fan gear that actually matched the energy of the game, I decided to build it myself. Every drop is my answer to that search.
+            From a young age, I was drawn to two worlds: the raw energy of hip-hop street culture and the electric atmosphere of the NBA. Growing up, those two worlds weren't separate — they fed each other. The music, the courts, the players, the style. It all moved together.
           </p>
           <p className="font-body-lg text-body-lg opacity-80 mb-6">
-            The brand was built on one principle: fan gear should feel as premium as the sport it represents. No cheap prints, no generic designs — just limited, intentional pieces for people who actually care about the game.
+            For years I wore what was available, but nothing ever felt right. The fan gear was generic. The streetwear didn't carry the culture. I wanted something that lived at the intersection of both — pieces that felt like they belonged on the court and on the block at the same time.
+          </p>
+          <p className="font-body-lg text-body-lg opacity-80 mb-6">
+            So I built it. NATI NBA SHOP is the brand I always wanted to buy from. Every drop is intentional, every piece is limited, and everything we make is rooted in the culture that raised me.
           </p>
           <div className="flex gap-8 border-t-2 border-black pt-8 mt-8">
             <div>
