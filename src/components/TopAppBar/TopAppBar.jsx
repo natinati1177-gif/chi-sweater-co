@@ -75,6 +75,7 @@ export default function TopAppBar() {
               { to: '/about', label: 'ABOUT', active: isActive('/about') },
               { to: '/shop', label: 'SHOP', active: isShopActive },
               { to: '/shop?badge=LIMITED', label: 'LIMITED', active: isLimitedActive },
+              { to: '/contact', label: 'CONTACT', active: isActive('/contact') },
             ].map(({ to, label, active }) => (
               <Link
                 key={to}
@@ -156,6 +157,7 @@ export default function TopAppBar() {
               { to: '/about', label: 'ABOUT' },
               { to: '/shop', label: 'SHOP' },
               { to: '/shop?badge=LIMITED', label: 'LIMITED EDITION' },
+              { to: '/contact', label: 'CONTACT' },
             ].map(({ to, label }) => (
               <Link
                 key={to}

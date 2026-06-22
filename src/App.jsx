@@ -15,6 +15,7 @@ import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 import OrderSuccessPage from './pages/OrderSuccessPage/OrderSuccessPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
+import ContactPage from './pages/ContactPage/ContactPage'
 import RequireAdmin from './components/RequireAdmin/RequireAdmin'
 import AdminLayout from './pages/admin/AdminLayout'
 import AdminDashboard from './pages/admin/AdminDashboard'
@@ -58,6 +59,7 @@ function AppRoutes() {
         <Route path="/order-success" element={<OrderSuccessPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
