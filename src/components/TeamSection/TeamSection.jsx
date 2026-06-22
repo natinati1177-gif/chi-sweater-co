@@ -20,7 +20,7 @@ export default function TeamSection() {
         {/* Bio */}
         <div className="flex-1 pt-2">
           <p className="font-label-bold text-secondary uppercase tracking-widest text-sm mb-2">
-            Founder & Creative Director
+            Founder, Designer & Creative Director
           </p>
           <h3 className="font-headline-lg text-headline-lg uppercase mb-6">
             Nati Sendeke.
