@@ -36,6 +36,10 @@ export default function ShopPage() {
         return ai - bi
       })
       setCategories(sorted)
+      if (!badgeFilter) {
+        const clothing = sorted.find(c => c.name === 'Clothing')
+        if (clothing) setSelectedCategory(clothing.id)
+      }
     })
   }, [])
 
@@ -93,7 +97,7 @@ export default function ShopPage() {
             {isLimited ? (
               <>LIMITED<br /><span className="text-red-600">EDITION</span></>
             ) : (
-              <>SHOP<br /><span className="text-red-600">ALL</span></>
+              <>SHOP<br /><span className="text-red-600">NOW</span></>
             )}
           </h1>
           <p className="font-space-grotesk text-sm text-gray-400 max-w-sm">
