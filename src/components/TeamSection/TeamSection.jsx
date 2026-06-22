@@ -26,13 +26,16 @@ export default function TeamSection() {
             Nati Sendeke.
           </h3>
           <p className="font-body-lg text-body-lg opacity-80 mb-6">
-            From a young age, I was drawn to two worlds: the raw energy of hip-hop street culture and the electric atmosphere of the NBA. Growing up, those two worlds weren't separate — they fed each other. The music, the courts, the players, the style. It all moved together.
+            From a young age, I had two loves: hip-hop and the NBA. Not two separate worlds — one world that moved together. The music, the courts, the players, the style.
           </p>
           <p className="font-body-lg text-body-lg opacity-80 mb-6">
-            For years I wore what was available, but nothing ever felt right. The fan gear was generic. The streetwear didn't carry the culture. I wanted something that lived at the intersection of both — pieces that felt like they belonged on the court and on the block at the same time.
+            I used to wake up in the middle of the night just to watch Kobe do what nobody else could. Michael making it look easy. The show, the moment, the feeling — only those who lived it really understand.
           </p>
           <p className="font-body-lg text-body-lg opacity-80 mb-6">
-            So I built it. NATI NBA SHOP is the brand I always wanted to buy from. Every drop is intentional, every piece is limited, and everything we make is rooted in the culture that raised me.
+            I grew up wearing jerseys, scarves, caps — anything that connected me to that culture. But nothing ever felt right. The gear was generic. The streetwear didn't carry the soul. I always felt like something was missing.
+          </p>
+          <p className="font-body-lg text-body-lg opacity-80 mb-6">
+            So I took the passion I grew up with and built something of my own. NATI NBA SHOP is the brand I always wanted to buy from. Every piece is personally designed by me, every drop is limited, and everything we make is rooted in the culture that raised me — the court, the block, and everything in between.
           </p>
           <div className="flex gap-8 border-t-2 border-black pt-8 mt-8">
             <div>
