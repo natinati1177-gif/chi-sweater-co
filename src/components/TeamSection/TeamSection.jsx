@@ -1,41 +1,51 @@
-import TeamMemberCard from '../TeamMemberCard/TeamMemberCard'
-
-const team = [
-  {
-    id: 1,
-    name: 'Marcus Webb',
-    title: 'Founder & Creative Director',
-    bio: 'Lifelong NBA fan and former art director. Marcus launched NATI NBA SHOP after years of searching for fan gear that actually matched the energy of the game. Every drop is his answer to that search.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCBO1jbJn9ApbCMYi-8-qYdaGOo20lYEr5qeX0iRLSW_lfz3GvNc5Qhj6YpWbTkweM_oxS7jY_RNBRxew5TmVX8BUmDJHZJeWJL77YW-80M3dGsd0Qp3JJ81kQ81mioKc1bZYlmJP8vfxaQIcGSh05XNcHpvMerRBZgyMa9QMJ0ltvq6GCzRavuj8IHOwgppK7kqaUlQwqCWrboH6fmdTIOXa4xargzkcOvmXi40glEpqbSb5xCX1vvukRwChVMEC8h7gtmOFywa9TL',
-  },
-  {
-    id: 2,
-    name: 'Aaliyah Torres',
-    title: 'Head of Design',
-    bio: 'Design graduate with a background in sportswear. Aaliyah translates the visual language of basketball — the jerseys, the courts, the icons — into wearable streetwear that feels both premium and authentic.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBfdMpY9zka-lIGXVk90ioEYO0_SkqHxl1EY8v0jiFtHKb3fWW9rgTldSG0ePvaEF2u0TKTNUUrwE0jPLef8t6_c2E9xVWVVRmZMdB-6KfYxw3VYCfsj-pjHghLAYYz9LlILHrY3PkYZu138kfodyW8MU7itxLewMLnqV4B9JFDBZv_sr41pKyA0QGMeRgP3iXYPDnHH1Dg4G1Vx_o6FNiIhG_7r-avbscnbsmyvl-A0pVlPCFpz76h1OuqWL_xfI5KC64HU3Lty3_N',
-  },
-  {
-    id: 3,
-    name: 'Jordan Kim',
-    title: 'Operations & Brand Strategy',
-    bio: 'Former logistics lead turned brand strategist. Jordan built the systems that keep every drop sharp — limited quantities, fast shipping, and a community that knows when to show up.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCYjpZBE33h0EX9X958poJ8nqY-ccxLcZqr5CHppHC6xpTvszmZf0vxULa0HHsj41K_m2cQMTjv02daQZ_x9omEV5k11wkRnlOF5LrImksvXH7HOBoCHEGtPi_DN6faT9vu11c0T6tibNeil8OXDHtgcJ9AnSo8DkwCVA5_YW-Gr4635suaYgyTRwphTQKmBa0oA0pDYFwKX6vazmCmvJRrfRVzhDe7v_9EVXsvraVVLrD65uviQ9mU0dqiRqT2Njb9042jeBgMBVbO',
-  },
-]
-
 export default function TeamSection() {
   return (
     <section className="py-section-gap px-margin-mobile md:px-margin-desktop">
-      <div className="flex justify-between items-end mb-12">
-        <h2 className="font-headline-lg text-headline-lg uppercase">
-          The People<br />Behind the Brand.
-        </h2>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-        {team.map((member) => (
-          <TeamMemberCard key={member.id} {...member} />
-        ))}
+      <h2 className="font-headline-lg text-headline-lg uppercase mb-12">
+        The People<br />Behind the Brand.
+      </h2>
+
+      <div className="flex flex-col md:flex-row gap-12 items-start">
+        {/* Photo */}
+        <div className="w-full md:w-[380px] flex-shrink-0">
+          <div className="overflow-hidden aspect-[3/4] border-2 border-black bg-neutral-100">
+            <img
+              src="https://kwhvzqakxbadvvajdftp.supabase.co/storage/v1/object/public/product-images/WhatsApp%20Image%202026-06-22%20at%2014.00.31.jpeg"
+              alt="Founder"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Bio */}
+        <div className="flex-1 pt-2">
+          <p className="font-label-bold text-secondary uppercase tracking-widest text-sm mb-2">
+            Founder & Creative Director
+          </p>
+          <h3 className="font-headline-lg text-headline-lg uppercase mb-6">
+            Nati.
+          </h3>
+          <p className="font-body-lg text-body-lg opacity-80 mb-6">
+            Lifelong NBA fan and the creative force behind NATI NBA SHOP. After years of searching for fan gear that actually matched the energy of the game, I decided to build it myself. Every drop is my answer to that search.
+          </p>
+          <p className="font-body-lg text-body-lg opacity-80 mb-6">
+            The brand was built on one principle: fan gear should feel as premium as the sport it represents. No cheap prints, no generic designs — just limited, intentional pieces for people who actually care about the game.
+          </p>
+          <div className="flex gap-8 border-t-2 border-black pt-8 mt-8">
+            <div>
+              <p className="font-label-bold uppercase text-secondary text-xs tracking-widest mb-1">Est.</p>
+              <p className="font-headline-md text-2xl uppercase">2019</p>
+            </div>
+            <div>
+              <p className="font-label-bold uppercase text-secondary text-xs tracking-widest mb-1">Drops / Year</p>
+              <p className="font-headline-md text-2xl uppercase">24+</p>
+            </div>
+            <div>
+              <p className="font-label-bold uppercase text-secondary text-xs tracking-widest mb-1">Ships To</p>
+              <p className="font-headline-md text-2xl uppercase">Worldwide</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
