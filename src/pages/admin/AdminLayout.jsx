@@ -1,8 +1,6 @@
-import { NavLink, Outlet, Link, Navigate, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
-
-const ADMIN_EMAIL = 'natinati1177@gmail.com'
 
 const TABS = [
   { to: '/admin/dashboard', label: 'Dashboard' },
@@ -12,12 +10,8 @@ const TABS = [
 ]
 
 export default function AdminLayout() {
-  const { user, loading } = useAuth()
+  const { user } = useAuth()
   const navigate = useNavigate()
-
-  if (loading) return null
-  if (!user) return <Navigate to="/signin" replace />
-  if (user.email !== ADMIN_EMAIL) return <Navigate to="/" replace />
 
   const initial = user.email?.[0]?.toUpperCase() ?? 'A'
 

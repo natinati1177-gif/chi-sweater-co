@@ -15,6 +15,7 @@ import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
 import OrderSuccessPage from './pages/OrderSuccessPage/OrderSuccessPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
+import RequireAdmin from './components/RequireAdmin/RequireAdmin'
 import AdminLayout from './pages/admin/AdminLayout'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminProducts from './pages/admin/AdminProducts'
@@ -29,7 +30,7 @@ function AppRoutes() {
   if (isAdmin) {
     return (
       <Routes>
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
           <Route index element={<Navigate to="/admin/dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="products" element={<AdminProducts />} />
