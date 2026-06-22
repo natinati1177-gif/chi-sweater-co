@@ -5,13 +5,20 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 
 const SORT_OPTIONS = [
   { value: 'newest', label: 'Newest' },
-  { value: 'price_asc', label: 'Price: Low to High' },
-  { value: 'price_desc', label: 'Price: High to Low' },
+  { value: 'price_asc', label: 'Price ↑' },
+  { value: 'price_desc', label: 'Price ↓' },
+]
+
+const TRUST_ITEMS = [
+  { icon: 'local_shipping', text: 'Free Shipping $75+' },
+  { icon: 'autorenew', text: '30-Day Returns' },
+  { icon: 'verified', text: 'Authentic Gear' },
 ]
 
 export default function ShopPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const badgeFilter = searchParams.get('badge')
+  const isLimited = badgeFilter === 'LIMITED'
 
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
@@ -19,8 +26,7 @@ export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [sort, setSort] = useState('newest')
   const [search, setSearch] = useState('')
-
-  const isLimited = badgeFilter === 'LIMITED'
+  const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
     supabase.from('categories').select('*').order('name').then(({ data }) => setCategories(data ?? []))
@@ -48,55 +54,121 @@ export default function ShopPage() {
     setSelectedCategory('')
     setSort('newest')
     setSearch('')
+    setSearchInput('')
     setSearchParams({})
   }
 
-  return (
-    <section className="px-margin-mobile md:px-margin-desktop py-section-gap">
-      {/* Header */}
-      <div className="mb-10">
-        <h1 className="font-headline-lg text-headline-lg uppercase leading-none mb-2">
-          {isLimited ? 'LIMITED EDITION' : 'SHOP ALL'}
-        </h1>
-        {isLimited && (
-          <p className="font-body-md opacity-60">Exclusive items — limited quantities</p>
-        )}
-        <div className="mt-4 w-16 h-1 bg-red-600" />
-      </div>
+  const hasActiveFilters = selectedCategory || search || sort !== 'newest' || badgeFilter
 
-      {/* Filters bar */}
-      <div className="flex flex-wrap gap-3 mb-8 items-center">
-        {/* Search */}
-        <div className="relative">
-          <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">search</span>
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search products..."
-            className="border-2 border-black pl-4 pr-10 py-2 font-space-grotesk text-sm focus:outline-none focus:border-red-600 w-52"
-          />
+  return (
+    <div className="min-h-screen">
+
+      {/* ── Hero Banner ── */}
+      <div className="bg-black text-white relative overflow-hidden">
+        {/* Background watermark text */}
+        <div
+          className="absolute inset-0 flex items-center justify-center select-none pointer-events-none"
+          aria-hidden="true"
+        >
+          <span className="font-space-grotesk font-black text-[20vw] uppercase text-white/[0.03] leading-none">
+            {isLimited ? 'LIMITED' : 'SHOP'}
+          </span>
         </div>
 
-        {/* Category */}
-        {!isLimited && (
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="border-2 border-black px-4 py-2 font-space-grotesk text-sm bg-white focus:outline-none"
-          >
-            <option value="">All Categories</option>
-            {categories.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
+        {/* Red left accent bar */}
+        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-red-600" />
+
+        <div className="relative px-6 md:px-12 lg:px-20 py-12 md:py-16">
+          <p className="font-space-grotesk font-bold text-xs uppercase tracking-[0.3em] text-red-500 mb-3">
+            {isLimited ? '🔥 Exclusive Drops' : '🏀 Chicago Streetwear'}
+          </p>
+          <h1 className="font-space-grotesk font-black uppercase leading-none text-5xl md:text-7xl lg:text-8xl mb-4">
+            {isLimited ? (
+              <>LIMITED<br /><span className="text-red-600">EDITION</span></>
+            ) : (
+              <>SHOP<br /><span className="text-red-600">ALL</span></>
+            )}
+          </h1>
+          <p className="font-space-grotesk text-sm text-gray-400 max-w-sm">
+            {isLimited
+              ? "Once they're gone, they're gone. No restocks."
+              : 'Heavyweight cotton. Engineered in Chicago. Ships worldwide.'}
+          </p>
+        </div>
+      </div>
+
+      {/* ── Trust Strip ── */}
+      <div className="bg-red-600 text-white">
+        <div className="flex divide-x divide-red-500 max-w-4xl mx-auto">
+          {TRUST_ITEMS.map(({ icon, text }) => (
+            <div key={text} className="flex-1 flex items-center justify-center gap-2 py-3 px-4">
+              <span className="material-symbols-outlined text-[18px]">{icon}</span>
+              <span className="font-space-grotesk font-bold text-xs uppercase tracking-wider whitespace-nowrap">{text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Category Pills ── */}
+      {!isLimited && (
+        <div className="border-b-2 border-black bg-white sticky top-[57px] md:top-[61px] z-30">
+          <div className="px-6 md:px-12 lg:px-20 py-3 flex gap-2 overflow-x-auto scrollbar-none">
+            <button
+              onClick={() => setSelectedCategory('')}
+              className={`whitespace-nowrap px-5 py-2 font-space-grotesk font-bold text-xs uppercase tracking-wider border-2 transition-colors flex-shrink-0 ${
+                !selectedCategory
+                  ? 'bg-black text-white border-black'
+                  : 'border-black text-black hover:bg-black hover:text-white'
+              }`}
+            >
+              All
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(selectedCategory === cat.id ? '' : cat.id)}
+                className={`whitespace-nowrap px-5 py-2 font-space-grotesk font-bold text-xs uppercase tracking-wider border-2 transition-colors flex-shrink-0 ${
+                  selectedCategory === cat.id
+                    ? 'bg-red-600 text-white border-red-600'
+                    : 'border-black text-black hover:bg-black hover:text-white'
+                }`}
+              >
+                {cat.name}
+              </button>
             ))}
-          </select>
-        )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Filter Bar ── */}
+      <div className="px-6 md:px-12 lg:px-20 py-4 flex items-center gap-3 border-b border-gray-100 bg-white">
+        {/* Count */}
+        <span className="font-space-grotesk font-bold text-sm text-gray-400 mr-auto">
+          {loading ? '...' : `${products.length} product${products.length !== 1 ? 's' : ''}`}
+        </span>
+
+        {/* Search */}
+        <div className="relative hidden sm:block">
+          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">
+            search
+          </span>
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && setSearch(searchInput)}
+            onBlur={() => setSearch(searchInput)}
+            placeholder="Search..."
+            className="border-2 border-black pl-9 pr-4 py-2 font-space-grotesk text-sm focus:outline-none focus:border-red-600 w-40"
+          />
+        </div>
 
         {/* Sort */}
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="border-2 border-black px-4 py-2 font-space-grotesk text-sm bg-white focus:outline-none"
+          className="border-2 border-black px-3 py-2 font-space-grotesk font-bold text-sm bg-white focus:outline-none focus:border-red-600 appearance-none pr-8 cursor-pointer"
+          style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 8px center' }}
         >
           {SORT_OPTIONS.map((o) => (
             <option key={o.value} value={o.value}>{o.label}</option>
@@ -104,56 +176,105 @@ export default function ShopPage() {
         </select>
 
         {/* Clear */}
-        {(selectedCategory || search || sort !== 'newest') && (
+        {hasActiveFilters && (
           <button
             onClick={clearFilters}
-            className="flex items-center gap-1 text-sm font-space-grotesk font-bold text-red-600 hover:underline"
+            className="flex items-center gap-1 text-xs font-space-grotesk font-bold text-red-600 hover:underline whitespace-nowrap"
           >
-            <span className="material-symbols-outlined text-[16px]">close</span>
-            Clear Filters
+            <span className="material-symbols-outlined text-[14px]">close</span>
+            Clear
           </button>
         )}
-
-        <span className="ml-auto font-space-grotesk text-sm text-gray-400 font-bold">
-          {products.length} products
-        </span>
       </div>
 
-      {/* Grid */}
-      {loading ? (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[1,2,3,4,5,6,7,8].map(i => (
-            <div key={i} className="flex flex-col gap-3">
-              <div className="aspect-[3/4] bg-neutral-100 animate-pulse border-2 border-black" />
-              <div className="h-4 bg-neutral-100 animate-pulse w-3/4" />
-              <div className="h-4 bg-neutral-100 animate-pulse w-1/4" />
-            </div>
-          ))}
+      {/* ── Mobile Search ── */}
+      <div className="px-6 py-3 sm:hidden bg-white border-b border-gray-100">
+        <div className="relative">
+          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">search</span>
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && setSearch(searchInput)}
+            onBlur={() => setSearch(searchInput)}
+            placeholder="Search products..."
+            className="w-full border-2 border-black pl-9 pr-4 py-2.5 font-space-grotesk text-sm focus:outline-none focus:border-red-600"
+          />
         </div>
-      ) : products.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-32 text-center">
-          <span className="material-symbols-outlined text-6xl text-gray-200 mb-4">inventory_2</span>
-          <h2 className="font-space-grotesk font-black uppercase text-xl mb-2">No Products Found</h2>
-          <p className="text-gray-400 text-sm mb-6">Try changing the filters</p>
-          <button onClick={clearFilters} className="bg-black text-white px-8 py-3 font-space-grotesk font-bold uppercase text-sm hover:bg-red-600 transition-colors">
-            Show All
-          </button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
-            <ProductCard
-              key={p.id}
-              id={p.id}
-              name={p.name}
-              price={`$${Number(p.price).toFixed(2)}`}
-              badge={p.badge}
-              badgeVariant={p.badge_variant}
-              image={p.image_url}
-            />
-          ))}
+      </div>
+
+      {/* ── Products Grid ── */}
+      <div className="px-6 md:px-12 lg:px-20 py-8 bg-white">
+        {loading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="flex flex-col gap-3">
+                <div className="aspect-[3/4] bg-gray-100 animate-pulse border-2 border-gray-200" />
+                <div className="h-4 bg-gray-100 animate-pulse w-3/4 rounded" />
+                <div className="h-4 bg-gray-100 animate-pulse w-1/3 rounded" />
+              </div>
+            ))}
+          </div>
+        ) : products.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-32 text-center">
+            <span className="material-symbols-outlined text-7xl text-gray-200 mb-4">inventory_2</span>
+            <h2 className="font-space-grotesk font-black uppercase text-xl mb-2">No Products Found</h2>
+            <p className="text-gray-400 text-sm font-space-grotesk mb-6">Try changing or clearing your filters</p>
+            <button
+              onClick={clearFilters}
+              className="bg-black text-white px-8 py-3 font-space-grotesk font-bold uppercase text-sm hover:bg-red-600 transition-colors"
+            >
+              Show All Products
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {products.map((p) => (
+              <ProductCard
+                key={p.id}
+                id={p.id}
+                name={p.name}
+                price={`$${Number(p.price).toFixed(2)}`}
+                badge={p.badge}
+                badgeVariant={p.badge_variant}
+                image={p.image_url}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* ── Bottom Banner ── */}
+      {!loading && products.length > 0 && (
+        <div className="bg-black text-white py-12 px-6 md:px-12 lg:px-20 text-center">
+          <p className="font-space-grotesk font-black uppercase text-2xl md:text-3xl mb-2">
+            Can't find what you're looking for?
+          </p>
+          <p className="font-space-grotesk text-gray-400 text-sm mb-6">
+            New drops every Friday. Follow us for first access.
+          </p>
+          <div className="flex justify-center gap-3">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 border-2 border-white text-white px-6 py-3 font-space-grotesk font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-colors"
+            >
+              <span className="material-symbols-outlined text-[18px]">photo_camera</span>
+              Instagram
+            </a>
+            <a
+              href="https://tiktok.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-red-600 text-white px-6 py-3 font-space-grotesk font-bold uppercase text-xs tracking-widest hover:bg-red-500 transition-colors"
+            >
+              <span className="material-symbols-outlined text-[18px]">smart_display</span>
+              TikTok
+            </a>
+          </div>
         </div>
       )}
-    </section>
+    </div>
   )
 }
