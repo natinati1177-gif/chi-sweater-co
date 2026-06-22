@@ -114,11 +114,11 @@ export default function ProductPage() {
     <>
       {/* Red top accent bar */}
       <div className="bg-red-600 text-white py-2 px-margin-mobile md:px-margin-desktop flex items-center justify-center gap-6 text-xs font-label-bold uppercase tracking-widest">
-        <span>🔥 Limited Stock</span>
+        <span>🏀 Authentic NBA Fan Gear</span>
         <span className="opacity-40">|</span>
         <span>Free Shipping Over $75</span>
         <span className="opacity-40">|</span>
-        <span>500GSM Heavyweight Cotton</span>
+        <span>30-Day Returns</span>
       </div>
 
       <section className="py-section-gap px-margin-mobile md:px-margin-desktop pb-32">
@@ -155,7 +155,7 @@ export default function ProductPage() {
                 <span className="bg-red-600 text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest">
                   NATI NBA SHOP
                 </span>
-                <span className="font-label-bold uppercase text-xs opacity-40 tracking-widest">— Chicago, IL</span>
+                <span className="font-label-bold uppercase text-xs opacity-40 tracking-widest">— Official Fan Gear</span>
               </div>
               <h1 className="font-headline-lg text-headline-lg uppercase leading-none mb-4">
                 {product.name}
@@ -188,7 +188,7 @@ export default function ProductPage() {
             </div>
 
             <p className="font-body-md opacity-70 leading-relaxed">
-              {product.description || 'Premium Chicago streetwear. Heavyweight 500GSM cotton. Built for the city, made to last.'}
+              {product.description || 'Premium NBA fan gear. Built for those who live and breathe the game. Limited quantities — get it before it sells out.'}
             </p>
 
             {/* Size selector */}
@@ -247,10 +247,10 @@ export default function ProductPage() {
             {/* Details strip */}
             <div className="border-t-2 border-black pt-6 flex flex-col gap-3">
               {[
-                ['Material', '500GSM Heavyweight Cotton'],
-                ['Fit', 'Oversized / Relaxed'],
-                ['Origin', 'Chicago, IL'],
-                ['Care', 'Machine wash cold, tumble dry low'],
+                ['Condition', 'Brand New'],
+                ['Ships From', 'United States'],
+                ['Delivery', '3–7 Business Days'],
+                ['Returns', '30-Day Free Returns'],
               ].map(([label, value]) => (
                 <div key={label} className="flex justify-between font-body-md text-sm">
                   <span className="font-label-bold uppercase opacity-50">{label}</span>
