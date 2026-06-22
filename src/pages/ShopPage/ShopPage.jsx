@@ -24,7 +24,19 @@ export default function ShopPage() {
   const [searchInput, setSearchInput] = useState('')
 
   useEffect(() => {
-    supabase.from('categories').select('*').order('name').then(({ data }) => setCategories(data ?? []))
+    const CATEGORY_ORDER = ['Clothing', 'Hats', 'Posters', 'Scarves', 'Accessories']
+    supabase.from('categories').select('*').then(({ data }) => {
+      if (!data) return setCategories([])
+      const sorted = [...data].sort((a, b) => {
+        const ai = CATEGORY_ORDER.indexOf(a.name)
+        const bi = CATEGORY_ORDER.indexOf(b.name)
+        if (ai === -1 && bi === -1) return a.name.localeCompare(b.name)
+        if (ai === -1) return 1
+        if (bi === -1) return -1
+        return ai - bi
+      })
+      setCategories(sorted)
+    })
   }, [])
 
   useEffect(() => {
@@ -75,7 +87,7 @@ export default function ShopPage() {
 
         <div className="relative px-6 md:px-12 lg:px-20 py-12 md:py-16">
           <p className="font-space-grotesk font-bold text-xs uppercase tracking-[0.3em] text-red-500 mb-3">
-            {isLimited ? '🔥 Exclusive Drops' : '🏀 Chicago Streetwear'}
+            {isLimited ? '🔥 Exclusive Drops' : '🏀 NBA Fan Gear'}
           </p>
           <h1 className="font-space-grotesk font-black uppercase leading-none text-5xl md:text-7xl lg:text-8xl mb-4">
             {isLimited ? (
@@ -87,7 +99,7 @@ export default function ShopPage() {
           <p className="font-space-grotesk text-sm text-gray-400 max-w-sm">
             {isLimited
               ? "Once they're gone, they're gone. No restocks."
-              : 'Heavyweight cotton. Engineered in Chicago. Ships worldwide.'}
+              : 'Premium NBA fan gear. Every piece designed by Nati. Ships worldwide.'}
           </p>
         </div>
       </div>
@@ -96,16 +108,6 @@ export default function ShopPage() {
       {!isLimited && (
         <div className="border-b-2 border-black bg-white sticky top-[57px] md:top-[61px] z-30">
           <div className="px-6 md:px-12 lg:px-20 py-3 flex gap-2 overflow-x-auto scrollbar-none">
-            <button
-              onClick={() => setSelectedCategory('')}
-              className={`whitespace-nowrap px-5 py-2 font-space-grotesk font-bold text-xs uppercase tracking-wider border-2 transition-colors flex-shrink-0 ${
-                !selectedCategory
-                  ? 'bg-black text-white border-black'
-                  : 'border-black text-black hover:bg-black hover:text-white'
-              }`}
-            >
-              All
-            </button>
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -119,6 +121,16 @@ export default function ShopPage() {
                 {cat.name}
               </button>
             ))}
+            <button
+              onClick={() => setSelectedCategory('')}
+              className={`whitespace-nowrap px-5 py-2 font-space-grotesk font-bold text-xs uppercase tracking-wider border-2 transition-colors flex-shrink-0 ${
+                !selectedCategory
+                  ? 'bg-black text-white border-black'
+                  : 'border-black text-black hover:bg-black hover:text-white'
+              }`}
+            >
+              All
+            </button>
           </div>
         </div>
       )}
