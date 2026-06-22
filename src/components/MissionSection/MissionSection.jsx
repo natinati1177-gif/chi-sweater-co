@@ -1,7 +1,7 @@
 const stats = [
   { label: 'Est.', value: '2019' },
-  { label: 'Fabric Weight', value: '500GSM' },
-  { label: 'Based In', value: 'Chicago, IL' },
+  { label: 'Drops / Year', value: '24+' },
+  { label: 'Ships To', value: 'Worldwide' },
 ]
 
 export default function MissionSection() {
@@ -12,17 +12,17 @@ export default function MissionSection() {
         <div className="w-full lg:w-2/3">
           <span className="text-secondary font-label-bold uppercase tracking-widest mb-4 block">Our Mission</span>
           <h2 className="font-headline-lg text-headline-lg uppercase mb-8">
-            Born in the Loop.<br />
-            <span className="text-secondary">Built to Last.</span>
+            Built for the Game.<br />
+            <span className="text-secondary">Worn for Life.</span>
           </h2>
           <p className="font-body-lg text-body-lg mb-6 opacity-80">
-            NATI NBA SHOP started in a small studio off the Chicago Riverwalk in 2019. We were tired of streetwear that looked premium but fell apart after a season. So we engineered something different — garments with the same structural integrity as the city that inspired them.
+            NATI NBA SHOP was born from a simple obsession — the culture, the players, the energy of basketball. We were tired of fan gear that looked cheap and felt worse. So we built something different: premium NBA-inspired apparel that lives up to the passion of the fans who wear it.
           </p>
           <p className="font-body-lg text-body-lg mb-6 opacity-80">
-            We source only 500GSM heavyweight cotton fleece, dyed with low-impact pigments that hold their color through Chicago winters. Every seam is double-stitched. Every drop is capped at 100 units. We don't restock. We don't compromise.
+            Every piece is designed with the game in mind — from the icons who defined eras to the teams that move millions of people. We drop limited quantities, curated collections, and exclusive collaborations that celebrate the sport we love.
           </p>
           <p className="font-body-lg text-body-lg opacity-80">
-            This city taught us that confidence isn't loud — it's precise. That's the energy we put into every piece.
+            We don't do restocks. We don't do compromises. If you sleep on a drop, it's gone — just like a buzzer beater you'll be talking about for years.
           </p>
         </div>
 

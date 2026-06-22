@@ -69,7 +69,7 @@ export default function CartPage() {
         <span className="material-symbols-outlined text-6xl mb-6 opacity-20">shopping_cart</span>
         <h1 className="font-headline-lg text-headline-lg uppercase mb-4">Your Cart is Empty</h1>
         <p className="font-body-lg opacity-60 mb-10 max-w-md">Browse our latest drops and find something worth owning.</p>
-        <Link to="/" className="bg-black text-white px-10 py-5 font-label-bold uppercase tracking-widest hover:bg-secondary transition-all duration-300">
+        <Link to="/shop" className="bg-black text-white px-10 py-5 font-label-bold uppercase tracking-widest hover:bg-red-600 transition-all duration-300">
           Shop Now
         </Link>
       </section>
