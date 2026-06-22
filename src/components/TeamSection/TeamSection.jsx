@@ -37,20 +37,6 @@ export default function TeamSection() {
           <p className="font-body-lg text-body-lg opacity-80 mb-6">
             So I took the passion I grew up with and built something of my own. NATI NBA SHOP is the brand I always wanted to buy from. Every piece is personally designed by me, every drop is limited, and everything we make is rooted in the culture that raised me — the court, the block, and everything in between.
           </p>
-          <div className="flex gap-8 border-t-2 border-black pt-8 mt-8">
-            <div>
-              <p className="font-label-bold uppercase text-secondary text-xs tracking-widest mb-1">Est.</p>
-              <p className="font-headline-md text-2xl uppercase">2019</p>
-            </div>
-            <div>
-              <p className="font-label-bold uppercase text-secondary text-xs tracking-widest mb-1">Drops / Year</p>
-              <p className="font-headline-md text-2xl uppercase">24+</p>
-            </div>
-            <div>
-              <p className="font-label-bold uppercase text-secondary text-xs tracking-widest mb-1">Ships To</p>
-              <p className="font-headline-md text-2xl uppercase">Worldwide</p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
