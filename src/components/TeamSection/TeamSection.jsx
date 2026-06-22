@@ -2,7 +2,7 @@ export default function TeamSection() {
   return (
     <section className="py-section-gap px-margin-mobile md:px-margin-desktop">
       <h2 className="font-headline-lg text-headline-lg uppercase mb-12">
-        The People<br />Behind the Brand.
+        The Man<br />Behind the Brand.
       </h2>
 
       <div className="flex flex-col md:flex-row gap-12 items-start">
