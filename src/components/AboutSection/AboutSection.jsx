@@ -12,13 +12,13 @@ export default function AboutSection() {
       <div className="w-full md:w-1/2">
         <span className="text-secondary font-label-bold uppercase tracking-widest mb-4 block">Our DNA</span>
         <h2 className="font-headline-lg text-headline-lg uppercase mb-8">
-          Engineered for the<br />Midwest Cold.
+          Built for the<br />Game. Worn for Life.
         </h2>
         <p className="font-body-lg text-body-lg mb-6 opacity-80">
-          Born in the heart of the Loop, NATI NBA SHOP isn't just about apparel—it's a tribute to the resilience and rhythm of Chicago. Every stitch is inspired by the city's industrial past and its vibrant streetwear future.
+          NATI NBA SHOP is more than a clothing brand — it's a tribute to the culture, passion, and legacy of basketball. Every piece we design is inspired by the icons of the game, the energy of game night, and the fans who live and breathe the sport year-round.
         </p>
         <p className="font-body-lg text-body-lg mb-10 opacity-80">
-          We use only the highest-grade cotton and sustainable dyes, ensuring that your look is as durable as the city itself. This is high-fashion minimalism for those who walk the streets with purpose.
+          We use only the highest-grade cotton and premium materials, so your gear is as tough as the players you cheer for. This is streetwear built for those who love the NBA — on the court, in the stands, and everywhere in between.
         </p>
         <button className="bg-black text-white px-10 py-5 font-label-bold uppercase tracking-widest hover:bg-secondary transition-all duration-300">
           Read Our Story
