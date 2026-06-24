@@ -79,61 +79,73 @@ NBA fans — primarily ages 16–35 — who care about how they rep their fandom
 
 ## Database Schema (ERD)
 
-The database is hosted on Supabase. Tables and relationships:
+The database is hosted on Supabase (PostgreSQL). The diagram below is rendered automatically by GitHub:
 
+```mermaid
+erDiagram
+    users {
+        uuid id PK
+        text email
+    }
+
+    categories {
+        uuid id PK
+        text name
+        text slug
+        timestamptz created_at
+    }
+
+    products {
+        uuid id PK
+        text name
+        text description
+        numeric price
+        text image_url
+        uuid category_id FK
+        boolean in_stock
+        text badge
+        text badge_variant
+        timestamptz created_at
+    }
+
+    cart_items {
+        uuid id PK
+        uuid user_id FK
+        uuid product_id FK
+        integer quantity
+        timestamptz created_at
+    }
+
+    orders {
+        uuid id PK
+        uuid user_id FK
+        text full_name
+        text email
+        text phone
+        text address
+        text city
+        numeric total
+        text status
+        timestamptz created_at
+    }
+
+    order_items {
+        uuid id PK
+        uuid order_id FK
+        uuid product_id FK
+        text product_name
+        numeric product_price
+        integer quantity
+        text image_url
+    }
+
+    categories ||--o{ products : "has"
+    products ||--o{ cart_items : "in"
+    products ||--o{ order_items : "in"
+    users ||--o{ cart_items : "owns"
+    users ||--o{ orders : "places"
+    orders ||--o{ order_items : "contains"
 ```
-auth.users (Supabase built-in)
-  └── cart_items.user_id → auth.users.id
-  └── orders.user_id     → auth.users.id
-
-categories
-  id          uuid  PK
-  name        text
-  created_at  timestamp
-
-products
-  id           uuid  PK
-  name         text
-  description  text
-  price        numeric
-  image_url    text
-  category_id  uuid  FK → categories.id
-  in_stock     boolean
-  badge        text        (e.g. "LIMITED", "NEW")
-  badge_variant text
-  created_at   timestamp
-
-cart_items
-  id          uuid  PK
-  user_id     uuid  FK → auth.users.id
-  product_id  uuid  FK → products.id
-  quantity    integer
-  created_at  timestamp
-
-orders
-  id          uuid  PK
-  user_id     uuid  FK → auth.users.id
-  full_name   text
-  email       text
-  phone       text
-  address     text
-  city        text
-  total       numeric
-  status      text        (pending / fulfilled / cancelled)
-  created_at  timestamp
-
-order_items
-  id             uuid  PK
-  order_id       uuid  FK → orders.id
-  product_id     uuid  FK → products.id
-  product_name   text
-  product_price  numeric
-  quantity       integer
-  image_url      text
-```
-
-> Screenshot of the visual ERD from Supabase Schema Visualizer:
-> *(Database → Schema Visualizer in the Supabase dashboard)*
 
 ---
 
