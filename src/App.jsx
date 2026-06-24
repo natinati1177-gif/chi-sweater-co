@@ -16,6 +16,10 @@ import OrderSuccessPage from './pages/OrderSuccessPage/OrderSuccessPage'
 import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage'
 import ResetPasswordPage from './pages/ResetPasswordPage/ResetPasswordPage'
 import ContactPage from './pages/ContactPage/ContactPage'
+import ShippingPage from './pages/ShippingPage/ShippingPage'
+import ReturnsPage from './pages/ReturnsPage/ReturnsPage'
+import PrivacyPage from './pages/PrivacyPage/PrivacyPage'
+import SizeGuidePage from './pages/SizeGuidePage/SizeGuidePage'
 import RequireAdmin from './components/RequireAdmin/RequireAdmin'
 import AdminLayout from './pages/admin/AdminLayout'
 import AdminDashboard from './pages/admin/AdminDashboard'
@@ -60,6 +64,10 @@ function AppRoutes() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/shipping" element={<ShippingPage />} />
+        <Route path="/returns" element={<ReturnsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/size-guide" element={<SizeGuidePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

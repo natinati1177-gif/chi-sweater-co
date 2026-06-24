@@ -15,6 +15,7 @@ export default function ProductPage() {
   const navigate = useNavigate()
 
   const [product, setProduct] = useState(null)
+  const [related, setRelated] = useState([])
   const [loading, setLoading] = useState(true)
   const [selectedSize, setSelectedSize] = useState(null)
   const [adding, setAdding] = useState(false)
@@ -25,13 +26,25 @@ export default function ProductPage() {
   const addToCartRef = useRef(null)
 
   useEffect(() => {
+    setSelectedSize(null)
+    setAdded(false)
     supabase
       .from('products')
       .select('*')
       .eq('id', id)
       .single()
       .then(({ data, error }) => {
-        if (!error && data) setProduct(data)
+        if (!error && data) {
+          setProduct(data)
+          supabase
+            .from('products')
+            .select('*')
+            .eq('category_id', data.category_id)
+            .eq('in_stock', true)
+            .neq('id', id)
+            .limit(3)
+            .then(({ data: rel }) => setRelated(rel ?? []))
+        }
         setLoading(false)
       })
   }, [id])
@@ -187,6 +200,14 @@ export default function ProductPage() {
               ))}
             </div>
 
+            {/* Stock indicator */}
+            {product.badge === 'LIMITED' && (
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />
+                <span className="font-label-bold uppercase text-xs tracking-widest text-red-600">Only a few left — selling fast</span>
+              </div>
+            )}
+
             <p className="font-body-md opacity-70 leading-relaxed">
               {product.description || 'Premium NBA fan gear. Built for those who live and breathe the game. Limited quantities — get it before it sells out.'}
             </p>
@@ -261,6 +282,30 @@ export default function ProductPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Products */}
+      {related.length > 0 && (
+        <section className="px-margin-mobile md:px-margin-desktop pb-20">
+          <div className="border-t-2 border-black pt-14 mb-10">
+            <h2 className="font-headline-lg text-headline-lg uppercase">You May Also Like</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {related.map((p) => (
+              <Link key={p.id} to={`/product/${p.id}`} className="group">
+                <div className="aspect-[3/4] border-2 border-black overflow-hidden mb-3 bg-neutral-100">
+                  <img
+                    src={p.image_url}
+                    alt={p.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="font-label-bold uppercase text-sm group-hover:text-red-600 transition-colors">{p.name}</p>
+                <p className="font-body-md text-sm opacity-60 mt-1">${Number(p.price).toFixed(2)}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Sticky Add to Cart Bar */}
       <div
