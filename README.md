@@ -149,16 +149,37 @@ erDiagram
 
 ---
 
-## Demo
+## Demo & Testing Guide
 
-To test the full shopping flow:
+### Regular User Flow
 
 1. Go to [nati-nba-shop.vercel.app](https://nati-nba-shop.vercel.app)
-2. Click **Sign Up** and create a free account with any email
-3. Browse products → add to cart → proceed to checkout
-4. Fill in any delivery details to place a test order
+2. Click **Sign Up** and create a free account with any email and password
+3. Browse products by category → click a product → add to cart
+4. Go to Cart → proceed to Checkout
+5. Fill in any delivery details and click **Place Order**
+6. After placing an order, click **My Orders** in the top bar to see order history and status
+7. Stay idle for 15 minutes → an auto-logout warning modal will appear with a 60-second countdown
 
 No payment information is required — checkout saves the order directly to the database.
+
+---
+
+### Admin Panel
+
+The admin panel allows managing products, categories, and orders.
+
+| Field | Value |
+|---|---|
+| **URL** | [nati-nba-shop.vercel.app/admin](https://nati-nba-shop.vercel.app/admin) |
+| **Email** | natinati1177@gmail.com |
+| **Password** | Nati2107 |
+
+**What the admin can do:**
+- **Dashboard** — overview of total products, categories, and orders
+- **Products** — add, edit, or delete products (name, price, image, category, stock, badge)
+- **Categories** — manage product categories
+- **Orders** — view all customer orders, update order status (Pending → Processing → Shipped → Delivered)
 
 ---
 
