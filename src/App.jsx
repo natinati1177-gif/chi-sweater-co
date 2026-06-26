@@ -27,6 +27,7 @@ import AdminProducts from './pages/admin/AdminProducts'
 import AdminProductForm from './pages/admin/AdminProductForm'
 import AdminCategories from './pages/admin/AdminCategories'
 import AdminOrders from './pages/admin/AdminOrders'
+import OrdersPage from './pages/OrdersPage/OrdersPage'
 
 function AppRoutes() {
   const location = useLocation()
@@ -68,6 +69,7 @@ function AppRoutes() {
         <Route path="/returns" element={<ReturnsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/size-guide" element={<SizeGuidePage />} />
+        <Route path="/orders" element={<OrdersPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

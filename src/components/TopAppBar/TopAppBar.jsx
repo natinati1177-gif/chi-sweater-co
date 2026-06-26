@@ -106,14 +106,24 @@ export default function TopAppBar() {
             )}
 
             {user ? (
-              <button
-                onClick={handleSignOut}
-                title="Sign Out"
-                className="flex items-center gap-1 text-xs font-label-bold uppercase tracking-widest hover:text-red-600 transition-colors duration-200"
-              >
-                <span className="material-symbols-outlined text-xl">logout</span>
-                <span className="hidden md:inline">Sign Out</span>
-              </button>
+              <div className="flex items-center gap-3">
+                <Link
+                  to="/orders"
+                  title="My Orders"
+                  className="hidden md:flex items-center gap-1 text-xs font-label-bold uppercase tracking-widest hover:text-red-600 transition-colors duration-200"
+                >
+                  <span className="material-symbols-outlined text-xl">package_2</span>
+                  <span>My Orders</span>
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  title="Sign Out"
+                  className="flex items-center gap-1 text-xs font-label-bold uppercase tracking-widest hover:text-red-600 transition-colors duration-200"
+                >
+                  <span className="material-symbols-outlined text-xl">logout</span>
+                  <span className="hidden md:inline">Sign Out</span>
+                </button>
+              </div>
             ) : (
               <Link
                 to="/signin"
@@ -172,12 +182,21 @@ export default function TopAppBar() {
 
             <div className="flex gap-4 mt-6">
               {user ? (
-                <button
-                  onClick={() => { handleSignOut(); setMenuOpen(false) }}
-                  className="flex-1 border-2 border-white text-white py-3 font-label-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-200"
-                >
-                  Sign Out
-                </button>
+                <div className="flex flex-col gap-3 flex-1">
+                  <Link
+                    to="/orders"
+                    className="border-2 border-white text-white py-3 font-label-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-200 text-center"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    My Orders
+                  </Link>
+                  <button
+                    onClick={() => { handleSignOut(); setMenuOpen(false) }}
+                    className="border-2 border-white text-white py-3 font-label-bold uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-200"
+                  >
+                    Sign Out
+                  </button>
+                </div>
               ) : (
                 <Link
                   to="/signin"
