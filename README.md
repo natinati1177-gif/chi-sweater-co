@@ -74,6 +74,7 @@ NBA fans — primarily ages 16–35 — who care about how they rep their fandom
 | Vercel | Hosting / Deployment | Auto-deploy on push to `main`; serves the production site |
 | Google Material Symbols | CDN / Icon library | UI icons throughout the app (cart, search, navigation, etc.) |
 | Google Fonts | CDN / Typography | Space Grotesk font used for headlines and branding |
+| ESPN API | Public REST API | Live NBA news headlines fetched in real time for the NBA Zone section |
 
 ---
 
