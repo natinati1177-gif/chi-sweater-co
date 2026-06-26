@@ -172,9 +172,13 @@ The admin panel allows managing products, categories, and orders.
 
 | Field | Value |
 |---|---|
-| **URL** | [nati-nba-shop.vercel.app/admin](https://nati-nba-shop.vercel.app/admin) |
 | **Email** | natinati1177@gmail.com |
 | **Password** | Nati2107 |
+
+**How to access:**
+1. Go to [nati-nba-shop.vercel.app/signin](https://nati-nba-shop.vercel.app/signin)
+2. Sign in with the email and password above
+3. An **Admin** button will appear in the top navigation bar — click it to enter the admin panel
 
 **What the admin can do:**
 - **Dashboard** — overview of total products, categories, and orders
